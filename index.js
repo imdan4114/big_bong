@@ -48,11 +48,19 @@ bot.on("ready", function () {
 	var sd = new Date();
 	var hour = sd.getHours();
 	var bong_o_clock = "";
+	var max_bongage = "MAXIMUM BONGAGE ACHIEVED!";
+	var max_bong = false;
 	for (i = 0; i < hour; i++) {
 	    bong_o_clock += "BONG! ";
+		if (i === 23) {
+		    max_bong = true;
+		}
 	}
 	console.log('it bonged fam');
 	bot.channels.get('314522923593498634').send(bong_o_clock);
+	    if (max_bong === true){
+		bot.channels.get('314522923593498634').send(bong_o_clock);
+	    }
     });
 
 });
