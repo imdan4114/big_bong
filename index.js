@@ -2,9 +2,12 @@ const Discord = require('discord.js');
 const bot = new Discord.Client();
 const settings = require('./settings.json');
 var schedule = require('node-schedule');
+var valid = require('validator');
 
 
 var pre = '.';
+var game = 'With your Mum\'s pussy';
+
 bot.on('message', (message) => {
     // qol things 
     if (!message.content.startsWith(pre)) return;
@@ -16,6 +19,12 @@ bot.on('message', (message) => {
 
     if (command === "say") {
 	message.channel.send(args.join(" "));
+    }
+
+    if (command === "changeGame") {
+	var newGame = args.join(" ");
+	bot.user.setGame(newGame);
+	message.channel.send("Game changed");
     }
     
     // commands
@@ -31,7 +40,7 @@ bot.on('message', (message) => {
 
 bot.on("ready", function () {
     console.log("Ready");
-    bot.user.setGame('with your Mum\'s pussy');
+    bot.user.setGame(game);
 
     var schedule = require('node-schedule');
 
